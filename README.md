@@ -1,4 +1,4 @@
 # Webpack boiler
 
-Set up with react and sass
+A boilerplate to be used as a starting point for projects
 

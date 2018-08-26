@@ -1,28 +1,19 @@
 /**
  *                                       By William Dunlop
- *   ______                  ___          __   _ _             
- *  |  ____|                | \ \        / /  | | |            
- *  | |__ ___  _ __ ___  ___| |\ \  /\  / /_ _| | | _____ _ __ 
- *  |  __/ _ \| '__/ _ \/ __| __\ \/  \/ / _` | | |/ / _ \ '__|
- *  | | | (_) | | |  __/\__ \ |_ \  /\  / (_| | |   <  __/ |   
- *  |_|  \___/|_|  \___||___/\__| \/  \/ \__,_|_|_|\_\___|_|                                                                                                                           
- *                                                       
+ *  __          __  _                      _      ____        _ _           
+ *  \ \        / / | |                    | |    |  _ \      (_) |          
+ *   \ \  /\  / /__| |__  _ __   __ _  ___| | __ | |_) | ___  _| | ___ _ __ 
+ *    \ \/  \/ / _ \ '_ \| '_ \ / _` |/ __| |/ / |  _ < / _ \| | |/ _ \ '__|
+ *     \  /\  /  __/ |_) | |_) | (_| | (__|   <  | |_) | (_) | | |  __/ |   
+ *      \/  \/ \___|_.__/| .__/ \__,_|\___|_|\_\ |____/ \___/|_|_|\___|_|   
+ *                       | |                                                
+ *                       |_|                                                
  *                                                       
  */
-
-/* Three dependencies */
-import Core from './core'
-
-/* UI Dependencies */
 import React from 'react';
 import ReactDOM from 'react-dom';
 
 import App from './interface/app';
 
-ReactDOM.render(<App />, document.getElementById('ui'));
+ReactDOM.render(<App />, document.getElementById('app'));
 
-/** 
- * Probably dont have to append App to window. 
- * Can look at simply calling upon it if we don't want app information to be public
- * */
-window.app = new Core();
