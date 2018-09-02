@@ -1,0 +1,38 @@
+{
+  "name": "vs-experiment-2",
+  "version": "1.0.0",
+  "author": "William Dunlop",
+  "description": "",
+  "main": "main.js",
+  "dependencies": {
+    "@tweenjs/tween.js": "^17.2.0",
+    "css-loader": "^1.0.0",
+    "express": "^4.16.3",
+    "jsx-render": "^0.6.6",
+    "node-sass": "^4.9.2",
+    "npm-run-all": "^4.1.3",
+    "sass-loader": "^7.0.3",
+    "style-loader": "^0.21.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-syntax-jsx": "^7.0.0",
+    "@babel/plugin-transform-react-jsx": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "babel-loader": "^8.0.1",
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.5.0",
+    "webpack-cli": "^2.0.14",
+    "webpack-dev-server": "^3.1.3"
+  },
+  "scripts": {
+    "build": "npm run build-js && npm run build-css && cp -r ./src/_static/* ./build/",
+    "build-js": "./node_modules/webpack/bin/webpack.js -p",
+    "build-css": "node-sass src/style/main.scss -o src/_static/style",
+    "watch-css": "npm run build-css && node-sass src/style/main.scss -o build/style --watch --recursive",
+    "watch-js": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --hot --progress --colors --inline",
+    "start": "npm-run-all -p watch-css watch-js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "ISC"
+}
