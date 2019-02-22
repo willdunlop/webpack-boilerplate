@@ -304,6 +304,14 @@ body {
     .container {
       width: 93.75%; } }
 
+.app {
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-25%, -25%);
+  font-size: 3em; }
+
 .container::after,
 .u-clearfix::after {
   clear: both;
