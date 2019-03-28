@@ -37,6 +37,10 @@ self.addEventListener('install', function (e) {
         '/style/main.css',
         '/registerSW.js',
 
+        '/assets/icons/icon-32.png',
+        '/assets/icons/icon-192.png',
+        '/assets/icons/icon-512.png',
+
         '/assets/vendor/three.min.js',
         '/assets/vendor/libs/stats.min.js',
         '/assets/vendor/controls/OrbitControls.js',
