@@ -1,3 +1,21 @@
 .app {
     
 }
+
+.notification {
+    z-index: 20;
+    position: absolute;
+    cursor: pointer;
+    top: -60px;
+    width: 100%;
+    background: rgba($malibu, 0.6);
+    color: $aquamarine;
+    padding: 1em;
+    text-align: center;
+
+    &:active {
+        background: rgba($purple, 0.6);
+    }
+}
+
+.show { top: 0; }

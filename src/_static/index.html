@@ -1,21 +1,34 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Forest Walker</title>
 
-    <link rel="stylesheet" href="style/main.css"></link>
-  </head>
-  <body style="margin: 0">
-      <div id="ui"></div>
-      <div id="container"></div>
+<head>
+  <meta charset="UTF-8">
+  <title>React Three SW Boilerplate</title>
 
-      <script src="assets/vendor/libs/stats.min.js"></script>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="/assets/icons/icon-32.png" type="image/png" sizes="32x32">
 
-      <script src="assets/vendor/three.min.js"></script>
-      <!-- <script src="assets/vendor/controls/OrbitControls.js"></script> -->
+  <link rel="stylesheet" href="style/main.css">
+  </link>
+</head>
 
-      <script type="text/javascript" src="/main.min.js"></script>
+<body style="margin: 0">
+  <div id="ui"></div>
+  <div id="container"></div>
 
-    </body>
+  <div id="updateAvailable" class="notification">A new version of this app is available. Click <a id="reload">here</a>
+    to update.</div>
+
+
+  <script src="assets/vendor/libs/stats.min.js"></script>
+
+  <script src="assets/vendor/three.min.js"></script>
+  <!-- <script src="assets/vendor/controls/OrbitControls.js"></script> -->
+
+  <script type="text/javascript" src="/main.min.js"></script>
+
+  <script type="text/javascript" src="/registerSW.js"></script>
+
+</body>
+
 </html>

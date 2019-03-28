@@ -304,6 +304,22 @@ body {
     .container {
       width: 93.75%; } }
 
+.notification {
+  z-index: 20;
+  position: absolute;
+  cursor: pointer;
+  top: -60px;
+  width: 100%;
+  background: rgba(116, 182, 254, 0.6);
+  color: #74febc;
+  padding: 1em;
+  text-align: center; }
+  .notification:active {
+    background: rgba(130, 0, 201, 0.6); }
+
+.show {
+  top: 0; }
+
 .container::after,
 .u-clearfix::after {
   clear: both;
