@@ -1,6 +1,6 @@
-// import * as THREE from 'three';
 import TWEEN from '@tweenjs/tween.js';
 
+import initialise from './initialise';
 import Tree from './meshes/tree';
 
 /**
@@ -12,8 +12,8 @@ class Core {
     constructor() {
             this.stats = new Stats();
             this.scene = new THREE.Scene();
-            this.renderer = this.configureRenderer();
-            this.camera = this.configureCamera();
+            this.renderer = initialise.configureRenderer();
+            this.camera = initialise.configureCamera();
             // this.controls = this.configureControls();
             this.raycaster = new THREE.Raycaster();
             this.mouse = new THREE.Vector2();
@@ -23,35 +23,6 @@ class Core {
             this.animate(0);
     }
 
-    /**
-     * @function: configureRenderer
-     * @returns: {Object}: renderer
-     * sets up and configures the renderer object to be used in the
-     * environment.
-     */
-    configureRenderer() {
-        const renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true });
-        renderer.setPixelRatio(window.devicePixelRatio);
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.shadowMap.enabled = true;
-        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-
-        return renderer;
-    }
-
-    /**
-     * @function: configureCamera
-     * @returns: {Object}: camera
-     * sets up and configures the camera object to be used in the
-     * environment.
-     */
-    configureCamera() {
-        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 10000);
-        camera.updateProjectionMatrix();
-        camera.position.set(-275,275,250);
-
-        return camera;
-    }
 
 
     /**
@@ -80,20 +51,11 @@ class Core {
 
 
         /** Set up lights to be used in the scene */
-        const light = new THREE.DirectionalLight(0xffffff, 0.8);
-        light.position.set(300, 300, 300)
-        light.castShadow = true;
-        light.shadow.mapSize.width = 1024;
-        light.shadow.mapSize.height = 1024;
-        light.shadow.camera.near = 0.5;
-        light.shadow.camera.far = 900;
-        light.shadow.camera.left = -400;
-        light.shadow.camera.right = 400;
-        light.shadow.camera.top = 400;
-        light.shadow.camera.bottom = -400;
 
         // const shadowHelper = new THREE.CameraHelper(light.shadow.camera);
         // this.scene.add(shadowHelper)
+
+        const light = initialise.configureLight();
 
         const hemiLight = new THREE.HemisphereLight(0xffffff, 0x0a420d, 0.4 );
         hemiLight.position.y = 50;
@@ -112,9 +74,7 @@ class Core {
         treeMesh.position.set(0, 0, 0)
         this.scene.add(treeMesh);
 
-
         this.camera.lookAt(treeMesh.position);
-
 
         /** Add all lights, meshes and shaders to the scene */
         this.scene.add(light);
@@ -133,13 +93,20 @@ class Core {
      * allowing for animation
      */
     animate(timestamp) {
-        this.renderer.setAnimationLoop(this.render.bind(this));
+        this.renderer.setAnimationLoop(this.animate.bind(this));
+        this.update();
         this.render(timestamp);
 
         // this.camera.position.set(-275 + this.character.position.x, 275 + this.character.position.y,250 + this.character.position.z);
         // this.camera.lookAt(this.character.position);
 
         // this.controls.update();
+    }
+
+    update() {
+        /** FPS counter */
+        this.stats.update();
+
     }
 
     /**
@@ -149,8 +116,6 @@ class Core {
      * threejs/WebGL renderer to draw an image
      */
     render(timestamp) {
-        /** FPS counter */
-        this.stats.update();
 
         /** Render the scene */
         this.renderer.render(this.scene, this.camera);
